@@ -4,7 +4,7 @@
     <link href="/style.css" rel="stylesheet">
 </head>
 <body>
-    
+
     <!-- Including the header file -->
     <?php
     require_once("../config.php");
@@ -47,12 +47,25 @@
             <p>The above table can be added to over time, eventually filling out to a rather comprehensive information repository. More details can be added to each service in the services section once things like service versions are discovered, and other tables like VHOSTS may be added when appropriate.</p>
             <h2>Discovering Hosts</h2>
             <p>Okay, enough preamble. Let's take a look at how we can start building up a repository of hosts belonging to an organization.</p>
+            <h3>Certificate Logs</h3>
+            <p>The internet is build up of millions of resources owned by an equally massive number of organizations. As a result of the sensitive nature of our interactions with these resources, (transferring passwords when logging into online accounts etc.), there was a clear need to secure and encrypt these interactions. The method we eventually settled on for the encrpytion of online web-based communication was SSL. SSL is considered a layer 6 protocol, as it encrypts the application data of a web request. When we make a web request, most commonly a GET request when requesting a web page, or a POST request when sending user-generated data such as credentials to a web server, the actual data itself is encrypted with a complex, one way algorithm. (there is more to it, technically only the initial request and key exchange is asymettric, but for the purpose of this lesson this isn't important).<br>So great! We have our encrypted connection, there is now no way that someone listening in on our communication could read/modify our data if they managed to intercept it. However, how can we also be sure that the website we are actually sending our credentials to <i>is</i> the legitimate website of our intended recipient. <br>For example, let's say you send your critical information to 'shellhop.com', how do you know that someone sneaky on your network has created a false 'shellhop.com' that you are being redirected to, and even though our communication is encrypted, the attacker is at the other end anyway, and so they will recieve our data regardless with no need to decrypyt. <br>To solve this issue, extremely clever mathematicians and cryptographic experts created the concept of 'SSL Certificates'. Using complex mathematics, someone with the private decryption key within a public/private key pairing can <i>prove</i> that they are indeed in possession of said key without sharing it. This allows a third party to validate ownership of an SSL certificate, if they too are in possession of said key.<br>In the modern day, SSL certificates for public websites will obtain their private/public key, not through generating these themselves, but from a third party key authority. These authorities keep records of issued SSL certificates, and more importantly, which <i>domain</i> these keys have been assigned to. More importantly, due to the purpose of these records, they must be <i>publically accessible</i>.<br>This very brief explanation of SSL certificates culminates to these key points from an attackers perspective:</p>
+            <ul>
+                <li>All domains have a publically accessible record that contains key information about the SSL certificate.</li>
+                <li>We can reverse lookup a particular SSL certificate to see what <i>other</i> domains it may be linked to.</li>
+            </ul>
+            <p>By examining certificate logs for a particular domain, it may be possible to discover other domains, or typically subdomains of a particular organization.</p>
+            <p>Lets look at how we would go about this ourselves.</p>
+            <p>We can start by looking at <a href='https://crt.sh' target='_blank'>crt.sh</a>. This is a website that contains SSL certificate records. We can take a look at any record we like here. Be aware that in some states/regions these activities may be considered illegal, even if our intent is that of education and the information is public. You are free to perform any passive intelligence gathering technique you like to any system that falls under the shellhop.com domain, so although I don't <i>have</i> an ssl certificate for this site (yet), there may still be some interesting information in my certificate logs. <br>Give it a try now! Simply type 'shellhop.com' into crt.sh and see what results we can find.</p>
+            <img src='/images/learn/enumeration/shellhop_crt_results.png' alt='<results of a crt.sh query for shellhop.com>'></img>
+            <p>As we can see, there are several results for "Let's encrypt" as well as several other issuers. This is because although no <i>active</i> SSL key pair exists, all <i>previous</i> certificates to this domain are visible. This is <i>extremely</i> valuable, as we can use these logs to discover subdomains that may no longer be publically accessible. There may exist leftover domains that were forgotten about and are still accessible, and the logs never cleared up. There may also exist clues as to possible other subdomains that exist; in our shellhop example, we can see clearly that 'www.shellhop.com' is a subdomain we have previously had a certificate issued for, despite the fact that we began the engagement only with 'shellhop.com', the root domain, as part of our knowledge base.</p>
+            <p>We can also increase our productivity in this area with a simple script. 'crt.sh' actually supplies an API that let's us make calls and recieve JSON data in return, this way we can quickly scan the certificate logs for domains, strip out just the domains themselves, and then pull only the unique domains to end up with a very convenient list.</p>
         </section>
+
     </main>
 
-    <footer class="main_footer">
-        <div class="footer_left">
-            <a href="https://www.linkedin.com/in/louis-holmes-534a98390/" target="_blank">LinkedIn</a><a href="https://github.com/shellhop" target="_blank">GitHub</a><a href="https://doi.org/10.3390/jcp4030021" target="_blank">Publication</a>
-        </div>
-    </footer>
+    <!-- Including footer here -->
+    <?php
+    require_once(ROOT_PATH . '/resources/footer.php')
+    ?>
+
 </body>

@@ -27,9 +27,10 @@
             <p>I would like to use this section to clarify some things, I am not a website designer, I am not a web application developer (yet), I have a wide understanding of many internet and computer science topics, however I would not consider myself an expert in any field by any means. My end goal is to specialise in ethical hacking, and am constantly working on some kind of personal/professional development to further that goal. Every line of code for this site, and any of my other projects, has been written by me. Even the development of <i>this site</i>is my first real attempt at creating a functional website, and so is bound to undergo serious and regular changes. If content seems to be missing, or the site itself seems barebones, remember, this is by design. This site is designed to centralise my notes and record my development, not to serve as an end product in and of itself. This may change down the line, but for now, this site acts simply as a portfolio and a simple conglomerate of my learning, notes and projects.</p>
         </section>
     </main>
-    <footer class="main_footer">
-        <div class="footer">
-            <a href="https://www.linkedin.com/in/louis-holmes-534a98390/" target="_blank">LinkedIn</a><a href="https://github.com/shellhop" target="_blank">GitHub</a><a href="https://doi.org/10.3390/jcp4030021" target="_blank">Publication</a>
-        </div>
-    </footer>
+
+    <!-- Including footer here -->
+    <?php
+    require_once(ROOT_PATH . '/resources/footer.php')
+    ?>
+
 </body>

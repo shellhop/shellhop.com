@@ -96,6 +96,7 @@ main {
     max-width: 1440px;
     padding: 10px;
     height: auto;
+    margin-bottom: 30px;
 }
 
 table, th, td{
@@ -115,7 +116,7 @@ footer {
     background-color: aliceblue;
     padding: 4px;
     justify-content: center;
-    height: fit-content;
+    height: 35px;
     bottom: 0;
     margin-top: auto;
     position: fixed;
@@ -129,4 +130,8 @@ footer {
 footer a{
     padding: 8px;
     align-self: bottom;
+}
+
+ul {
+    margin: 20px;
 }
