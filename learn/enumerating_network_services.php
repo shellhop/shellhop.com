@@ -4,19 +4,12 @@
     <link href="/style.css" rel="stylesheet">
 </head>
 <body>
-    <header class="main_header">
-        <div class="header_left">
-            <a href="/index.html"><img class="header_logo" src="/images/logo.png"><h1>Shellhop.com</h1></a>
-        </div>
-
-        <div class="header_center">
-            <a href="/learn/index.html">Learn</a>
-            <a href="/projects/index.html">Projects</a>
-            <a href="/cheatsheets/index.html">Cheatsheets</a>
-        </div>
-    </header>
-
-    <div class="main_container">
+    
+    <!-- Including the header file -->
+    <?php
+    require_once("../config.php");
+    require_once(ROOT_PATH . "/resources/header.php");
+    ?>
 
     <main>
         <h1 class="page_header">Enumeration</h1>
@@ -52,10 +45,10 @@
             </table>
 
             <p>The above table can be added to over time, eventually filling out to a rather comprehensive information repository. More details can be added to each service in the services section once things like service versions are discovered, and other tables like VHOSTS may be added when appropriate.</p>
+            <h2>Discovering Hosts</h2>
+            <p>Okay, enough preamble. Let's take a look at how we can start building up a repository of hosts belonging to an organization.</p>
         </section>
     </main>
-
-    </div>
 
     <footer class="main_footer">
         <div class="footer_left">

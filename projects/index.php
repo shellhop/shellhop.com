@@ -4,17 +4,12 @@
     <link href="/style.css" rel="stylesheet">
 </head>
 <body>
-    <header class="main_header">
-        <div class="header_left">
-            <a href="index.html"><img class="header_logo" src="images/logo.png"><h1>Shellhop.com</h1></a>
-        </div>
 
-        <div class="header_center">
-            <a href="index.html">Learn</a>
-            <a href="index.html">Projects</a>
-            <a href="index.html">Cheatsheets</a>
-        </div>
-    </header>
+    <!-- Including the header file -->
+    <?php
+    require_once("../config.php");
+    require_once(ROOT_PATH . "/resources/header.php");
+    ?>
 
     <main>
         <h1 class="page_header">Shellhop</h1>
@@ -33,7 +28,7 @@
         </section>
     </main>
     <footer class="main_footer">
-        <div class="haeder_left">
+        <div class="footer_left">
             <a href="https://www.linkedin.com/in/louis-holmes-534a98390/" target="_blank">LinkedIn</a><a href="https://github.com/shellhop" target="_blank">GitHub</a><a href="https://doi.org/10.3390/jcp4030021" target="_blank">Publication</a>
         </div>
     </footer>

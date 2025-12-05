@@ -4,20 +4,15 @@
     <link href="/style.css" rel="stylesheet">
 </head>
 <body>
-    <header class="main_header">
-        <div class="header_left">
-            <a href="index.html"><img class="header_logo" src="images/logo.png"><h1>Shellhop.com</h1></a>
-        </div>
 
-        <div class="header_center">
-            <a href="index.html">Learn</a>
-            <a href="index.html">Projects</a>
-            <a href="index.html">Cheatsheets</a>
-        </div>
-    </header>
+    <!-- Including the header file -->
+    <?php
+    require_once("../config.php");
+    require_once(ROOT_PATH . "/resources/header.php");
+    ?>
 
     <main>
-        <h1 class="page_header">Shellhop</h1>
+        <h1 class="page_header">Learn</h1>
         <section class="introduction_section">
         <h2 class="">What is shellhop?</h2>
         <p>Shellhop, put simply, is a <i>digital namespace</i>. Shellhop exists as a group of physical and digital infrastructure, combining cloud and local solutions into a hybrid structure that allows me to practice setting up, maintaining, and testing various digital technologies. This site, for example, is hosted on a cloud server under digital ocean. It is running on an apache2 server. Other domains, such as 'gaming.shellhop.com' resolves to a locally hosted proxmox server that serves game servers for various clients. <br>Some services within shellhop are publically accessible, like this site and my game servers, others however, are internally accessible only, such as 'lab.shellhop.com', which is a comprehensive ethical hacking labratory environment made up of linux clients and servers, as well as windows servers and clients. Having an organized, centralized and comprehensive digital namespace has allowed me to safely experiment and gain experience with all things tech and security.</p>
@@ -33,7 +28,7 @@
         </section>
     </main>
     <footer class="main_footer">
-        <div class="haeder_left">
+        <div class="footer">
             <a href="https://www.linkedin.com/in/louis-holmes-534a98390/" target="_blank">LinkedIn</a><a href="https://github.com/shellhop" target="_blank">GitHub</a><a href="https://doi.org/10.3390/jcp4030021" target="_blank">Publication</a>
         </div>
     </footer>
