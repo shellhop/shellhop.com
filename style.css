@@ -135,3 +135,14 @@ footer a{
 ul {
     margin: 20px;
 }
+
+code {
+    color: greenyellow;
+    background-color: black;
+    margin: 5px;
+    display:flex;
+    width: fit-content;
+    overflow: auto;
+    max-width: 80%;
+    padding: 3px;
+}

@@ -18,8 +18,8 @@
         </section>
 
         <section>
-            <h3><a href="/learn/enumerating_network_services.php" target="_blank">Enumerating Network Services</a></h3>
-            <p>Get started enumerating network services with discovery and banner grabbing!</p>
+            <h3><a href="/learn/host_discovery.php" target="_blank">Host Discovery</a></h3>
+            <p>Get started discovering hosts with active/passive reconnaissance techniques!</p>
         </section>
     </main>
 
