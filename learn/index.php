@@ -11,6 +11,13 @@
     ?>
 
     <main>
+
+        <section>
+            <h3><a href="/learn/git.php" target="_blank">Git</a></h3>
+            <p>Learn Git, and the supplementary skills for working on software long term.</p>
+        </section>
+
+        
         <h1 class="page_header">Learn</h1>
         <section class="introduction_section">
             <h2 class="">Getting Started!</h2>
@@ -21,6 +28,8 @@
             <h3><a href="/learn/host_discovery.php" target="_blank">Host Discovery</a></h3>
             <p>Get started discovering hosts with active/passive reconnaissance techniques!</p>
         </section>
+
+
     </main>
 
     <!-- Including footer here -->
