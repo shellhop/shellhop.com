@@ -124,6 +124,114 @@
             
         </section>
 
+        <section>
+            <h2>Nmap Scripting Engine</h2>
+            <p>Nmap also consists of an extremely advanced scripting engine. Many scripts have been built into Nmap for various purposes, however they are split into 14 categories.</p>
+            <table>
+                <tr>
+                    <th>Category</th>
+                    <th>Desc</th>
+                </tr>
+                <tr>
+                    <td>auth</td>
+                    <td>Authentication credential discovery or determination</td>
+                </tr>
+                <tr>
+                    <td>broadcast</td>
+                    <td>Primarily for host discovery with broadcast techniques</td>
+                </tr>
+                <tr>
+                    <td>brute</td>
+                    <td>Brute force attack based scripts</td>
+                </tr>
+                <tr>
+                    <td>default</td>
+                    <td>Default scripts that run when the '-sC' flag is used</td>
+                </tr>
+                <tr>
+                    <td>dos</td>
+                    <td>Denial of service based attack scripts</td>
+                </tr>
+                <tr>
+                    <td>exploit</td>
+                    <td>Exploit scripts that can be used to exploit known vulnerabilities</td>
+                </tr>
+                <tr>
+                    <td>external</td>
+                    <td>Scripts that use external resources for further processing</td>
+                </tr>
+                <tr>
+                    <td>fuzzer</td>
+                    <td>Scripts that are used to fuzz for existing vulnerabilities and packet handling issues by sending different data</td>
+                </tr>
+                <tr>
+                    <td>intrusive</td>
+                    <td>Intrusive scripts that could negatively impact the target machine</td>
+                </tr>
+                <tr>
+                    <td>safe</td>
+                    <td>Scripts that do not perform invasive or potentially harmful actions.</td>
+                </tr>
+                <tr>
+                    <td>version</td>
+                    <td>Version detection scripts</td>
+                </tr>
+                <tr>
+                    <td>malware</td>
+                    <td>Scripts that detect if any malware effects the system.</td>
+                </tr>
+                <tr>
+                    <td>vuln</td>
+                    <td>Vulnerability scanners</td>
+                </tr>
+            </table>
+            <p>We can define which categories of scripts to use with different flags.</p>
+            <p>To perform a basic script scan with the default parameters we can use the '-sC' flag.</p>
+            <code>$ sudo nmap -sC 10.0.0.2</code>
+            <p>We can select a particular category with the following:</p>
+            <code>$ sudo nmap --script &lt;category&gt;</code>
+            <p>We can define specific scripts to run by providing the path to certain nmap script files:</p>
+            <code>$ sudo nmap 10.0.0.2 --script &lt;script name&gt;,&lt;script 2 name&gt;</code>
+            <p>The '-A' flag means 'aggressive', where nmap will scan with several default options such as scripts, OS detection, service detection and others.</p>
+        </section>
+
+        <section>
+            <h2>Performance settings</h2>
+            <p>Nmap scans can be extremely slow. There are however, many options we have for tinkering in order to achieve faster or more efficient results.</p>
+            <h3>Timeouts</h3>
+            <p>A round trip, or our round trip time, can be adjusted in our nmap command. By default, our round trip timeout is set to 100ms. We can set our own RTT with the '--max-rtt-timeout' and '--initial-rtt-timeout' flags.</p>
+            <code>$ sudo nmap 10.0.0.2 --initial-rtt-timeout 50ms --max-rtt-timeout 100ms</code>
+            <p>This will drastically increase our speed, however may cause us to overlook certain hosts or services with a slower response time.</p>
+            <h3>Retries</h3>
+            <p>We can set our max retries from the default of 10, to whatever number we like with '--max-retries'. We can even set this to zero. This will prevent nmap from retransmitting packets if it did not recieve a response, which will decrease reliability in return for speed and creating less network traffic.</p>
+            <code>$ sudo nmap 10.0.0.2 --max-retries 0</code>
+            <h3>Rate</h3>
+            <p>If we are working with a known network bandwidth, we can set nmap to send packets simultaneously accross the network according to that rate.</p>
+            <code>$ sudo nmap 10.0.0.2 --min-rate 300</code>
+            <h3>Timing presets</h3>
+            <p>Nmap comes with 6 total timing presets. We can use '-T[1-5]', with 5 being the fastest and most aggressive, and 0 being extremely slow. We must evaluate the purpose of our scan and our environment before we decide how to customise our parameters and achieve the best results.</p>
+        </section>
+
+        <section>
+            <h2>Firewall and IDS Evasion</h2>
+            <p>This is an extremely important section, as evading firewalls and avoiding the creation of logs from which we can be detected is paramount in any serious penetration test.</p>
+            <p>Luckily, Nmap has many useful features that we can use to avoid detection in complex environments.</p>
+            <h3>Detecting the firewall</h3>
+            <p>Before we begin our evasion tactics, we need to determine what the nature of the firewall is. Packets often show up as 'filtered', which means we did not get a response from our target port. This can be that our packets are 'dropped' and ignored, or outright rejected. The traffic looks slightly different for both. If our packet is dropped, we will see nothing in the logs, and our machine will wait its retransmission period before trying again. If our packet is rejected, we may see certain error logs like 'net unreachable' or 'host prohibited' returned. This stresses the importance of traffic analysis alongside our basic port scanning, as these small differences can make or break our enumeration.</p>
+            <h3>TCP Ack Scan</h3>
+            <p>The Nmap '-sA' or 'ACK' scan will send an acknowledgement packet to the target. This is extremely difficult to defend against when compared to our other scan options. Firewalls often prevent the initiation of connections by looking for the three way handshake, however, if we make it look like our machine already has a connection with the target via a 'ACK' packet, and the firewall cannot determine the original origin of our 'connection'. This often leads to our packet slipping by any firewall and reaching our target, triggering some kind of response. The response we are likely to recieve if the port is open, is RST, and the response will not exist if our packets are being dropped.</p>
+            <p>It is important to, once we are past the main firewall, analyse our data to look for any IDS or IPS in place. We can scan from a single IP and look for when we are blocked. If we lose our access through a certain IP address, we can then continue our test from another VPS, knowing we are dealing with some kind of IDS/IPS.</p>
+            <h3>Decoy IP's</h3>
+            <p>We can use decoys to reduce the chances of our IP address being blocked, by randomly sending packets from a number of IP addresses. This way, an IDS may have trouble blocking the correct machine. It is important that all devices are alive.</p>
+            <code>$ sudo nmap -D RND:5</code>
+            <h3>Source IP and port manipulation</h3>
+            <p>Administrators often use a firewall whitelist to allow certain important traffic into the network. If a company expects DNS requests to be sent via TCP port 53, we can spoof our source port to 53 and potentially bypass certain firewall rules.</p>
+            <code>$ sudo nmap -sS -Pn -n --disable-arp-ping --source-port 53 10.0.0.2</code>
+            <p>If we are able to bypass certain firewall rules with a source port of 53, we may be able to manually connect to certain ports with ncat.</p>
+            <code>$ nc -nv --source-port 53 10.0.0.2 50000</code>
+            
+
+        </section>
 
     </main>
 
