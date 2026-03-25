@@ -12,10 +12,6 @@
 
     <main>
 
-        <section>
-            <h3><a href="/learn/git.php" target="_blank">Git</a></h3>
-            <p>Learn Git, and the supplementary skills for working on software long term.</p>
-        </section>
 
         
         <h1 class="page_header">Learn</h1>
@@ -25,9 +21,25 @@
         </section>
 
         <section>
+            <h3><a href="/learn/git.php" target="_blank">Git</a></h3>
+            <p>Learn Git, and the supplementary skills for working on software long term.</p>
+        </section>
+
+        <section>
             <h3><a href="/learn/host_discovery.php" target="_blank">Host Discovery</a></h3>
             <p>Get started discovering hosts with active/passive reconnaissance techniques!</p>
         </section>
+    
+        <section>
+            <h3><a href="/learn/file_transfers.php" target="_blank">File Transfers</a></h3>
+            <p>Covertly move files accross networks in Windows and Linux environments!</p>
+        </section>
+                
+        <section>
+            <h3><a href="/learn/nmap.php" target="_blank">NMAP and enumeration</a></h3>
+            <p>Learn the most powerful network scanner!</p>
+        </section>
+
 
 
     </main>
