@@ -26,8 +26,18 @@
         </section>
 
         <section>
+            <h3><a href="/learn/nmap.php" target="_blank">NMAP and enumeration</a></h3>
+            <p>Learn the most powerful network scanner!</p>
+        </section>
+
+        <section>
             <h3><a href="/learn/host_discovery.php" target="_blank">Host Discovery</a></h3>
             <p>Get started discovering hosts with active/passive reconnaissance techniques!</p>
+        </section>
+
+        <section>
+            <h3><a href="/learn/footprinting/footprinting.php" target="_blank">Service footprinting</a></h3>
+            <p>Learn how to footprint services once they have been discovered.</p>
         </section>
     
         <section>
@@ -35,10 +45,7 @@
             <p>Covertly move files accross networks in Windows and Linux environments!</p>
         </section>
                 
-        <section>
-            <h3><a href="/learn/nmap.php" target="_blank">NMAP and enumeration</a></h3>
-            <p>Learn the most powerful network scanner!</p>
-        </section>
+
 
 
 
