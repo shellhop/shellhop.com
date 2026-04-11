@@ -99,6 +99,10 @@ main {
     margin-bottom: 30px;
 }
 
+p {
+    padding-bottom: 8px;
+}
+
 table, th, td{
     border: 2px solid black;
     border-collapse: collapse;
