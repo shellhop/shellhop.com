@@ -185,6 +185,23 @@
                     <td>Provide information on a user</td>
                 </tr>
             </table>
+
+            <p>Each user will have a 'RID', we can query for information on RID's if we already know an RID. However, as the RID values are predictable, we can use brute force methods to discover users on the domain.</p>
+            <code>$ for i in $(seq 500 1100);do rpcclient -N -U "" 10.0.0.2 -c "queryuser 0x$(printf '%x\n' $i)" | grep "User Name\|user_rid|group_rid" && echo "";done</code>
+            <p>The above code will enumerate users from RID '0x500' to '0x11000', if we have credentials we can use those to make requests too.</p>
+        </section>
+
+        <section>
+            <h2>Automating SMB Enumeration</h2>
+            <p>Many of these techniques can be automated with several tools. Tools like 'smbmap' and 'crackmapexec' are commonly used for quickly enumerating SMB shares. Let's take a quick look at some of these tools.</p>
+            <h3>SMBMap</h3>
+            <p>SMBmap is a tool built in python that was designed to automate SMB and RPC enumeration. The basic syntax is as follows:</p>
+            <code>$ smbmap -H 10.0.0.2</code>
+            <p>The above code will anonymously scan a host for shares, as well as display our available permissions for each share. If we have credentials for a Domain Account, we can use built-in authentication.</p>
+            <code>$ smbmap -u &lt;username&gt; -p &lt;password&gt; -H 10.0.0.2</code>
+            <p>Even with very limited Domain credentials, we will likely find extremely valuable domain information as opposed to being an anonymous user.</p>
+            <h3>NetExec</h3>
+            <p>NetExec is the modern alternative to 'crackmapexec', which was deprecated in 2023. It supports a very wide host of features, and should be looked into in more detail at a later time.</p>
         </section>
     </main>
 

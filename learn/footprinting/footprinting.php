@@ -77,6 +77,8 @@
             <h2>Service level footprinting</h2>
             <p>Now that we have discovered hosts, and services on those hosts with previous techniques, we can start interacting more directly with the services.</p>
             <a href="/learn/footprinting/ftp_footprinting.php">FTP Footprinting</a>
+            <a href="/learn/footprinting/smb_footprinting.php">SMB Footprinting</a>
+            <a href="/learn/footprinting/nfs_footprinting.php">NFS Footprinting</a>
         </section>
 
 
