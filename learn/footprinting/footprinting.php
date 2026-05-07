@@ -76,9 +76,12 @@
         <section>
             <h2>Service level footprinting</h2>
             <p>Now that we have discovered hosts, and services on those hosts with previous techniques, we can start interacting more directly with the services.</p>
-            <a href="/learn/footprinting/ftp_footprinting.php">FTP Footprinting</a>
-            <a href="/learn/footprinting/smb_footprinting.php">SMB Footprinting</a>
-            <a href="/learn/footprinting/nfs_footprinting.php">NFS Footprinting</a>
+            <h3><a href="/learn/footprinting/ftp_footprinting.php">FTP Footprinting</a></h3>
+            <h3><a href="/learn/footprinting/smb_footprinting.php">SMB Footprinting</a></h3>
+            <h3><a href="/learn/footprinting/nfs_footprinting.php">NFS Footprinting</a></h3>
+            <h3><a href="/learn/footprinting/dns_footprinting.php">DNS Footprinting</a></h3>
+            <h3><a href="/learn/footprinting/smtp_footprinting.php">SMTP Footprinting</a></h3>
+            <h3><a href="/learn/footprinting/pop3_imap_footprinting.php">POP3 & IMAP Footprinting</a></h3>
         </section>
 
 
