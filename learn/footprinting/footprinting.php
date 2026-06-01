@@ -82,6 +82,8 @@
             <h3><a href="/learn/footprinting/dns_footprinting.php">DNS Footprinting</a></h3>
             <h3><a href="/learn/footprinting/smtp_footprinting.php">SMTP Footprinting</a></h3>
             <h3><a href="/learn/footprinting/pop3_imap_footprinting.php">POP3 & IMAP Footprinting</a></h3>
+            <h3><a href="/learn/footprinting/sql_footprinting.php">SQL Footprinting</a></h3>
+
         </section>
 
 
